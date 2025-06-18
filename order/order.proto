@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+// نحدد مسار حزمة Go الناتجة
+option go_package = "my-grpc-project/order/orderpb";
+
+package order;
+
+// تعريف خدمة الطلبات
+service OrderService {
+  // وظيفة لإنشاء طلب جديد
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderReply);
+}
+
+// رسالة الطلب لإنشاء طلب جديد
+message CreateOrderRequest {
+  string user_name = 1; // اسم المستخدم الذي يقوم بالطلب
+  string item = 2;      // السلعة المطلوبة
+}
+
+// رسالة الرد بعد إنشاء الطلب
+message CreateOrderReply {
+  string status_message = 1; // رسالة توضح حالة الطلب
+}

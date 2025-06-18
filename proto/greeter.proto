@@ -1,0 +1,30 @@
+// نحدد إصدار الصيغة (Syntax) الذي نستخدمه. "proto3" هو الإصدار الأحدث والموصى به.
+syntax = "proto3";
+
+// هذا الخيار يخبر مترجم protoc أين يجب أن يضع ملفات Go التي سيتم إنشاؤها.
+// "greeter/greetpb" هو المسار الذي سنستخدمه داخل مشروع Go.
+option go_package = "my-grpc-project/greeter/greetpb";
+
+// الـ package يساعد على منع تضارب الأسماء بين ملفات proto المختلفة.
+package greeter;
+
+// هنا نعرّف الخدمة (Service). فكر فيها كواجهة (Interface) في البرمجة.
+// خدمتنا اسمها "Greeter" (المُحيّي).
+service Greeter {
+  // نعرّف "مكالمة" أو وظيفة (RPC - Remote Procedure Call) داخل الخدمة.
+  // اسمها SayHello، وتستقبل رسالة من نوع HelloRequest وترجع رسالة من نوع HelloReply.
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// هنا نعرّف شكل الرسالة (Message) التي ستُرسل كطلب (Request).
+// فكر فيها كـ struct في لغة Go.
+message HelloRequest {
+  // الرسالة تحتوي على حقل واحد من نوع string اسمه name، والرقم 1 هو معرّف فريد للحقل.
+  string name = 1;
+}
+
+// وهنا نعرّف شكل الرسالة التي ستُرسل كـرد (Reply).
+message HelloReply {
+  // تحتوي على حقل واحد من نوع string اسمه message، وهو يحمل الرقم 1.
+  string message = 1;
+}
