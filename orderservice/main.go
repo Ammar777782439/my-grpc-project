@@ -11,7 +11,7 @@ import (
 
 	// استيراد الحزم التي تم إنشاؤها لكلتا الخدمتين
 	greetpb "my-grpc-project/proto"  // خدمة الترحيب
-	orderpb "my-grpc-project/order/orderpb" // خدمة الطلبات
+	orderpb "my-grpc-project/order" // خدمة الطلبات
 )
 
 // تعريف struct لخادم الطلبات

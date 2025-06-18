@@ -6,7 +6,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	orderpb "my-grpc-project/order/orderpb" // استيراد حزمة الطلبات
+	orderpb "my-grpc-project/order" // استيراد حزمة الطلبات
 )
 
 func main() {
